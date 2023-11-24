@@ -1,4 +1,5 @@
-Halo haloo
+# tboCompiler
+Halo haloo 
 
 Ini satu diantara beberapa tugas projek saya di sem 3 yakni dari mata kuliah Teori Bahasa dan Otomata
 Ini juga merupakan kali pertama saya benar benar hands on menggunakan github dan tidak dibantu (sgt meraba-raba jdi mohon maaf akan kesalahan saya, saya masih pemula)
@@ -11,7 +12,3 @@ https://github.com/AZHenley/teenytinycompiler/tree/master
 
 jadi saya mengubahnya menggunakan bahasa indonesia supaya lebih berbeda
 dan memangkas beberapa hal yang sekiranya tidak apa-apa jika dipangkas hehe 
-
-# tboCompiler
-# 1 / 4 to go, hwaitingg
-# semoga tetap kuat sampai tamat
