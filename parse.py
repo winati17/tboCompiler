@@ -121,25 +121,7 @@ class Parser:
 
             self.match(TokenType.akhiriKetika)
             self.emitter.emitLine("}")
-
-        # "label" ident
-        elif self.checkToken(TokenType.label):
-            self.nextToken()
-
-            # Make sure this label doesn't already exist.
-            if self.curToken.text in self.labelsDeclared:
-                self.abort("Label already exists: " + self.curToken.text)
-            self.labelsDeclared.add(self.curToken.text)
-
-            self.emitter.emitLine(self.curToken.text + ":")
-            self.match(TokenType.IDENT)
-
-        # "pergike" ident
-        elif self.checkToken(TokenType.pergike):
-            self.nextToken()
-            self.labelsGotoed.add(self.curToken.text)
-            self.emitter.emitLine("goto " + self.curToken.text + ";")
-            self.match(TokenType.IDENT)
+            
 
         # "misalkan" ident = expression
         elif self.checkToken(TokenType.misalkan):
