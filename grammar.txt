@@ -3,7 +3,6 @@ statement ::= "tuliskan" (expression | string) nl
             | "jika" comparison "maka" nl {statement} "akhiriJika" nl
             | "ketika" comparison "ulangi" nl {statement} "akhiriKetika" nl
             | "misalkan" ident "=" expression nl
-            | "masukkan" ident nl
 comparison ::= expression (("==" | "!=" | ">" | ">=" | "<" | "<=") expression)+
 expression ::= term {( "-" | "+" ) term}
 term ::= unary {( "/" | "*" ) unary}
