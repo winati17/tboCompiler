@@ -45,7 +45,6 @@ class Parser:
 
 
     # Production rules.
-
     # program ::= {statement}
     def program(self):
         self.emitter.headerLine("#include <stdio.h>")
@@ -122,25 +121,6 @@ class Parser:
             self.match(TokenType.akhiriKetika)
             self.emitter.emitLine("}")
 
-        # "label" ident
-        elif self.checkToken(TokenType.label):
-            self.nextToken()
-
-            # Make sure this label doesn't already exist.
-            if self.curToken.text in self.labelsDeclared:
-                self.abort("Label already exists: " + self.curToken.text)
-            self.labelsDeclared.add(self.curToken.text)
-
-            self.emitter.emitLine(self.curToken.text + ":")
-            self.match(TokenType.IDENT)
-
-        # "pergike" ident
-        elif self.checkToken(TokenType.pergike):
-            self.nextToken()
-            self.labelsGotoed.add(self.curToken.text)
-            self.emitter.emitLine("goto " + self.curToken.text + ";")
-            self.match(TokenType.IDENT)
-
         # "misalkan" ident = expression
         elif self.checkToken(TokenType.misalkan):
             self.nextToken()
@@ -156,23 +136,6 @@ class Parser:
             
             self.expression()
             self.emitter.emitLine(";")
-
-        # "masukkan" ident
-        elif self.checkToken(TokenType.masukkan):
-            self.nextToken()
-
-            # If variable doesn't already exist, declare it.
-            if self.curToken.text not in self.symbols:
-                self.symbols.add(self.curToken.text)
-                self.emitter.headerLine("float " + self.curToken.text + ";")
-
-            # Emit scanf but also validate the input. If invalid, set the variable to 0 and clear the input.
-            self.emitter.emitLine("if(0 == scanf(\"%" + "f\", &" + self.curToken.text + ")) {")
-            self.emitter.emitLine(self.curToken.text + " = 0;")
-            self.emitter.emit("scanf(\"%")
-            self.emitter.emitLine("*s\");")
-            self.emitter.emitLine("}")
-            self.match(TokenType.IDENT)
 
         # This is not a valid statement. Error!
         else:
@@ -196,7 +159,6 @@ class Parser:
             self.nextToken()
             self.expression()
 
-
     # expression ::= term {( "-" | "+" ) term}
     def expression(self):
         self.term()
@@ -205,7 +167,6 @@ class Parser:
             self.emitter.emit(self.curToken.text)
             self.nextToken()
             self.term()
-
 
     # term ::= unary {( "/" | "*" ) unary}
     def term(self):
@@ -216,7 +177,6 @@ class Parser:
             self.nextToken()
             self.unary()
 
-
     # unary ::= ["+" | "-"] primary
     def unary(self):
         # Optional unary +/-
@@ -224,7 +184,6 @@ class Parser:
             self.emitter.emit(self.curToken.text)
             self.nextToken()        
         self.primary()
-
 
     # primary ::= number | ident
     def primary(self):

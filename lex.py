@@ -169,17 +169,14 @@ class TokenType(enum.Enum):
     IDENT = 2
     STRING = 3
     # Keywords.
-    label = 101
-    pergike = 102
-    tuliskan = 103
-    masukkan = 104
-    misalkan = 105
-    jika = 106
-    maka = 107
-    akhiriJika = 108
-    ketika = 109
-    ulangi = 110
-    akhiriKetika = 111
+    tuliskan = 101
+    misalkan = 102
+    jika = 103
+    maka = 104
+    akhiriJika = 105
+    ketika = 106
+    ulangi = 107
+    akhiriKetika = 108
     # Operators.
     EQ = 201  
     PLUS = 202

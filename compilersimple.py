@@ -4,7 +4,7 @@ from parse import *
 import sys
 
 def main():
-    print("Teeny Tiny Compiler")
+    print("Selamat datang di Compiler Simple")
 
     if len(sys.argv) != 2:
         sys.exit("Error: Compiler needs source file as argument.")
@@ -18,6 +18,6 @@ def main():
 
     parser.program() # Start the parser.
     emitter.writeFile() # Write the output to file.
-    print("Compiling completed.")
+    print("Alhamdulillah compiling selesai.")
 
 main()
